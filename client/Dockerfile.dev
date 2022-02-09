@@ -1,0 +1,9 @@
+FROM node:alpine
+WORKDIR /app
+RUN npm install -g gatsby-cli
+
+COPY package.json .
+COPY yarn.lock .
+RUN yarn install
+
+CMD [ "yarn", "develop" ]

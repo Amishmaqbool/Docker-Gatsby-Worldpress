@@ -1,0 +1,12 @@
+stages:
+  - deploy-surge
+
+deploy:
+  image: node:14
+  stage: deploy-surge
+  before_script:
+    - npm install -g surge
+  script:
+    - surge ./html --domain "$SURGE_HTML_DEVELOPMENT_DOMAIN" --token "$SURGE_TOKEN"
+  only:
+    - development
